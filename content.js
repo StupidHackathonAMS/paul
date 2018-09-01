@@ -1,7 +1,11 @@
-function handleMotion (event) {
+function foo (event) {
   const myDiv = document.body;
-  
-  myDiv.style.transform = 'rotate('+(event.accelerationIncludingGravity.x*36)+'deg)';
+  console.log(myDiv);
+  /*if (myDiv.style.transform) {
+  	myDiv.style.transform = '';
+  } else*/ {
+		myDiv.style.transform = 'rotate('+(Math.floor(Math.random()*360))+'deg)';
+  }
+  console.log(myDiv.style.transform);
 }
-document.addEventListener('devicemotion', handleMotion);
-
+document.addEventListener('mousemove', foo);
