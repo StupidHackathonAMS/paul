@@ -1,11 +1,20 @@
 var step = 'x';
 var t = 0;
+var ampl = 1;
 
 function xyas(t) {
-  const x = 5 * (Math.sin(t/45) + Math.sin(t/135));
-  const y = -3 * Math.cos(t/63);
-  const a = 10 * Math.cos(t/90);
-  const s = Math.sqrt(Math.pow(4 * Math.sin(t/320),2)) - 2;
+  const totalHeight = document.body.scrollHeight;
+  const center = totalHeight / 2;
+  const currentHeight = document.scrollingElement.scrollTop;
+  const screenHeight = window.innerHeight;
+  const distanceFromCenterInScreens = (currentHeight - center) / screenHeight;
+  const rot_ampl = Math.pow(Math.E, -Math.abs(distanceFromCenterInScreens)) + 0.2;
+  const tr_ampl = rot_ampl;
+
+  const x = ampl * tr_ampl * 100 * (Math.sin(t/45) + Math.sin(t/135));
+  const y = ampl * tr_ampl * 30 * Math.cos(t/63);
+  const a = ampl * rot_ampl * 15 * Math.cos(t/90);
+  const s = ampl * Math.sqrt(Math.pow(8 * Math.sin(t/320),2)) - 2;
   return [x, y, a, s];
 }
 
@@ -34,3 +43,37 @@ function nextStep (event) {
   window.setTimeout(nextStep, 0.1);
 }
 window.setTimeout(nextStep, 0.1)
+
+var oldX = 0;
+var oldY = 0;
+var olda = 0;
+function handleMouse(event) {
+  const newX = event.screenX;
+  const newY = event.screenY;
+  const [x, y, a, s] = xyas(t);
+  if ((newX-oldX) > 0) {
+    if (a > olda) {
+      ampl -= 0.1;
+    } else {
+      ampl += 0.1;
+    }
+  } else if ((newX-oldX) < 0) {
+    if (a < olda) {
+      ampl -= 0.1;
+    } else {
+      ampl += 0.1;
+    }
+  }
+  if (ampl > 3) {
+    ampl = 3;
+  }
+  if (ampl < 0.2) {
+    ampl = 0.2;
+  }
+
+  console.log(ampl);
+  oldX = newX;
+  oldY = newY;
+  olda = a;
+}
+document.addEventListener('mousemove', handleMouse);

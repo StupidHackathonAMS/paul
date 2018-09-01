@@ -1,5 +1,6 @@
 body {
   position: absolute;
+  transform-origin: center;
   transition: transform 0.1s;
   transition: left 0.1s;
   transition: top 0.1s;
