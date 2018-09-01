@@ -18,4 +18,5 @@ img.puke {
 	left: 100%;
 	top: 0;
 	transition: left 2s;
+	z-index: 10000;
 }
