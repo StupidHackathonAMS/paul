@@ -10,11 +10,15 @@ function xyas(t) {
   const distanceFromCenterInScreens = (currentHeight - center) / screenHeight;
   const rot_ampl = Math.pow(Math.E, -Math.abs(distanceFromCenterInScreens)) + 0.2;
   const tr_ampl = rot_ampl;
+  var fadeIn = t/200;
+  if (fadeIn > 1) {
+    fadeIn = 1;
+  }
 
-  const x = ampl * tr_ampl * 100 * (Math.sin(t/45) + Math.sin(t/135));
-  const y = ampl * tr_ampl * 30 * Math.cos(t/63);
-  const a = ampl * rot_ampl * 15 * Math.cos(t/90);
-  const s = ampl * Math.sqrt(Math.pow(8 * Math.sin(t/320),2)) - 2;
+  const x = fadeIn * ampl * tr_ampl * 100 * (Math.sin(t/45) + Math.sin(t/135));
+  const y = fadeIn * ampl * tr_ampl * 30 * Math.cos(t/63);
+  const a = fadeIn * ampl * rot_ampl * 15 * Math.cos(t/90);
+  const s = fadeIn * ampl * Math.sqrt(Math.pow(8 * Math.sin(t/320),2)) - 2;
   return [x, y, a, s];
 }
 
@@ -40,9 +44,9 @@ function nextStep (event) {
       break;
   }
   t += 1;
-  window.setTimeout(nextStep, 0.1);
+  window.setTimeout(nextStep, 10);
 }
-window.setTimeout(nextStep, 0.1)
+window.setTimeout(nextStep, 10)
 
 var oldX = 0;
 var oldY = 0;
@@ -71,7 +75,6 @@ function handleMouse(event) {
     ampl = 0.2;
   }
 
-  console.log(ampl);
   oldX = newX;
   oldY = newY;
   olda = a;
