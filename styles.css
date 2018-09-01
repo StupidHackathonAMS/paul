@@ -17,6 +17,7 @@ img.puke {
 	margin-top: -50px;
 	left: 100%;
 	top: 0;
-	transition: left 2s;
+	transition: left 0.1s;
+  transition: top 0.1s;
 	z-index: 10000;
 }

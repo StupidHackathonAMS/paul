@@ -79,6 +79,49 @@ function handleMouse(event) {
   oldY = newY;
   olda = a;
 }
+
+function getNextPukeStep(img, targetX, targetY) {
+  var currentX = img.offsetLeft;
+  var currentY = img.offsetTop;
+  const noOfSteps = 20;
+  var nextDimension = 'x';
+  var stepX = (targetX - currentX) / noOfSteps;
+  var stepY = (targetY - currentY) / noOfSteps;
+  var reachedX = false;
+  var reachedY = false;
+
+  const nextPukeStep = function (event) {
+    console.log(nextDimension);
+    switch(nextDimension) {
+      case 'x':
+        currentX += stepX;
+        if(currentX < targetX) {
+          currentX = targetX;
+          reachedX = true;
+        }
+        img.style.left = currentX + 'px';
+        nextDimension = 'y';
+        break;
+      case 'y':
+        currentY += stepY;
+        console.log(currentY)
+        if(currentY > targetY) {
+          currentY = targetY;
+          reachedY = true;
+        }
+        img.style.top = currentY + 'px';
+        nextDimension = 'x';
+        break;
+    }
+    if(!(reachedX && reachedY)) {
+      window.setTimeout(nextPukeStep, 100);
+    }
+  }
+
+window.setTimeout(nextPukeStep, 100);
+return nextPukeStep;
+}
+
 document.addEventListener('mousemove', handleMouse);
 
 function handleClick(event) {
@@ -86,10 +129,7 @@ function handleClick(event) {
   img.src = chrome.extension.getURL('images/puke.png');
   img.classList.add('puke');
   document.body.appendChild(img);
-  window.setTimeout(function () {
-    img.style.top = event.pageY + 'px';
-    img.style.left = event.pageX + 'px';
-  }, 100);
+  window.setTimeout(getNextPukeStep(img, event.pageX, event.pageY), 100);
   window.setTimeout(function () {
     img.style.display = 'none';
   }, 10000);
