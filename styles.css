@@ -1,10 +1,10 @@
 body {
   position: absolute;
   transform-origin: center;
-  transition: transform 0.1s;
-  transition: left 0.1s;
-  transition: top 0.1s;
-  transition: filter 0.1s;
+  transition: transform 0.01s;
+  transition: left 0.01s;
+  transition: top 0.01s;
+  transition: filter 0.01s;
   left: 0;
   top: 0;
   filter: blur(0px);
