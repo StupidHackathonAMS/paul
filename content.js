@@ -83,7 +83,6 @@ document.addEventListener('mousemove', handleMouse);
 
 function handleClick(event) {
   const img = document.createElement('img');
-  console.log(chrome.extension.getURL('images/puke.png'));
   img.src = chrome.extension.getURL('images/puke.png');
   img.classList.add('puke');
   document.body.appendChild(img);
@@ -91,6 +90,9 @@ function handleClick(event) {
     img.style.top = event.pageY + 'px';
     img.style.left = event.pageX + 'px';
   }, 100);
+  window.setTimeout(function () {
+    img.style.display = 'none';
+  }, 10000);
 }
 
 document.addEventListener('click', handleClick);
