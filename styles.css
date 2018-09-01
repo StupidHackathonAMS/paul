@@ -9,3 +9,13 @@ body {
   top: 0;
   filter: blur(0px);
 }
+
+img.puke {
+	position: absolute;
+	width: 200px;
+	margin-left: -100px;
+	margin-top: -50px;
+	left: 100%;
+	top: 0;
+	transition: left 1s;
+}

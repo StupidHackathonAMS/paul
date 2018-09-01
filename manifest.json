@@ -19,5 +19,9 @@
     "matches": ["<all_urls>"]
   }],
 
+    "web_accessible_resources": [
+      "images/puke.png"
+    ],
+
     "manifest_version": 2
   }
