@@ -1,16 +1,16 @@
 {
-    "name": "Not Annoying Chrome Extension",
+    "name": "Paul",
     "version": "1.0",
-    "description": "This chrome extension is not annoying, at all",
+    "description": "Your drunk guide to the internet",
     "background": {
       "scripts": ["background.js"],
       "persistent": false
     },
     "icons": {
-     "16": "images/get_started16.png",
-     "32": "images/get_started32.png",
-     "48": "images/get_started48.png",
-     "128": "images/get_started128.png"
+     "16": "images/paul_16.png",
+     "32": "images/paul_32.png",
+     "48": "images/paul_48.png",
+     "128": "images/paul_128.png"
    },
 
    "content_scripts": [{
@@ -18,6 +18,6 @@
     "js": ["content.js"],
     "matches": ["<all_urls>"]
   }],
-  
+
     "manifest_version": 2
   }
