@@ -1,9 +1,10 @@
 body {
-  transition: transform 1.5s;
-  transform-origin: center;
-  overflow-x: hidden;
-  overflow-y: hidden;
   position: absolute;
-  top: 0;
+  transition: transform 0.1s;
+  transition: left 0.1s;
+  transition: top 0.1s;
+  transition: filter 0.1s;
   left: 0;
+  top: 0;
+  filter: blur(0px);
 }
