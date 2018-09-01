@@ -1,3 +1,9 @@
 body {
   transition: transform 1.5s;
+  transform-origin: center;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
